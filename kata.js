@@ -1,5 +1,34 @@
+// Counting Duplicates in str
+/*function duplicateCount(text){
+  text = text.toLowerCase().split('')
+  return [...new Set(text.filter((v,i)=> text.indexOf(v) != i))].length
+  //return (text.toLowerCase().split('').sort().join('').match(/([^])\1+/g) || []).length
+} 
+
+console.log(duplicateCount('acdsdca'), 'acdsdca = 3')
+console.log(duplicateCount(''), " '' = 0")
+console.log(duplicateCount('indivisibility'), 'indivisibility = 1')
+*/
 
 
+// For example, if we run 9119 through the function, 811181 will come out,
+// because 92 is 81 and 12 is 1. (81-1-1-81)
+/*function squareDigits(num){
+  return String(num).split('').map(x => x * x).join('')*1
+}
+
+console.log(squareDigits(9119))
+*/
+
+// reduce n to single output  16  -->  1 + 6 = 7
+/*function digitalRoot(n) {
+    let res = String(n).split('').map(Number).reduce((total,value)=> total +value,0)
+    return res >= 10 ? digitalRoot(res) : res
+    //return n%9;
+}
+console.log(digitalRoot(16))
+console.log(digitalRoot(467))
+*/
 
 // Returnes new array with all positive numbers
 /*function filter_list(l) {
