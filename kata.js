@@ -1,3 +1,15 @@
+function solution(list){
+  arr=[]
+  for (let i = 0; i < list.length; i++) {
+    list[i] == list[i+1]+1 || list[i] == list[i+1]-1 ? arr.push(list[i]) :arr.push(100)
+  }
+  return arr
+  //list.map((x,i,y)=> i == y.length-1 || i == 0 ? arr.push(x) : 
+  //arr.push(y.slice(i,i+2).map((z,c,m)=> m[c]== m[c+1]-1))), arr
+  //list.map((x,i,y)=> i == y.length-1 || i == 0 ? arr.push(x) : arr.push(y.filter(e=> e==x-1))), arr  
+}
+
+console.log(solution([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]), "\n-6,-3-1,3-5,7-11,14,15,17-20")
 
 
 // Takes in a positive parameter num and returns its multiplicative persistence, 
