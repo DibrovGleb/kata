@@ -1,16 +1,39 @@
-function solution(list){
-  arr=[]
-  for (let i = 0; i < list.length; i++) {
-    list[i] == list[i+1]+1 || list[i] == list[i+1]-1 ? arr.push(list[i]) :arr.push(100)
+/*snail = function(a) {
+  r =[]
+  for (let x = 0; x < array.length; x++) {
+    for (let y = 0; y < array.length; y++) {
+      
+    }
   }
-  return arr
-  //list.map((x,i,y)=> i == y.length-1 || i == 0 ? arr.push(x) : 
-  //arr.push(y.slice(i,i+2).map((z,c,m)=> m[c]== m[c+1]-1))), arr
-  //list.map((x,i,y)=> i == y.length-1 || i == 0 ? arr.push(x) : arr.push(y.filter(e=> e==x-1))), arr  
+}
+console.log(snail([[1, 2, 3], [4, 5, 6], [7, 8, 9],[2,2,2,2,22]]), '[1, 2, 3, 6, 9, 8, 7, 4, 5]')
+*/
+
+//A format for expressing an ordered list of integers is to use a comma separated list of either 
+//individual integers or a range of integers denoted by the starting integer separated 
+//from the end integer in the range by a dash, '-'. 
+//The range includes all integers in the interval including both endpoints. 
+//It is not considered a range unless it spans at least 3 numbers.
+// For example
+/*solution1 = (list)=>list.reduce((acc,curr,i) => {
+  if (i==0) return curr.toString();
+  if (list[i-1] == curr-1 && list[i+1] == curr+1) return acc;
+  if (list[i-2] == curr-2 && list[i-1] == curr-1) return acc+"-"+curr;
+  return acc+","+curr;
+});
+console.log('solution1\n',solution1([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]), "\n-6,-3-1,3-5,7-11,14,15,17-20")
+function solution(l){
+  arr=[]
+  result =[]
+  s=0
+  for (let i = 0; i < l.length; i++) 
+  (l[i] == l[i-1]+1 || l[i] == l[i-1]-1)==true && (l[i] == l[i+1]+1 || l[i]==l[i+1]-1)==true ? s==0 ? (s=1, arr.splice(i,1,l[i-1]+'-')) : 0 : s==1 ? (s=0, arr.push(l[i])) : arr.push(l[i]);
+  arr.map((x,i,y)=> typeof y[i+1] == 'string' || typeof y[i-1] == 'string' ? 0 : typeof x == 'string' ? result.push(x+y[i+1]) : result.push(x))
+  return result.join(',')
 }
 
 console.log(solution([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]), "\n-6,-3-1,3-5,7-11,14,15,17-20")
-
+*/
 
 // Takes in a positive parameter num and returns its multiplicative persistence, 
 //which is the number of times you must multiply the digits in num until you reach a single digit.
