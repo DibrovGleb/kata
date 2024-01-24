@@ -1,12 +1,83 @@
-/*snail = function(a) {
-  r =[]
-  for (let x = 0; x < array.length; x++) {
-    for (let y = 0; y < array.length; y++) {
-      
-    }
+// Finding first non repeating letter and returns it
+/*function firstNonRepeatingLetter(s) {
+  if(!s) return ''
+  i=0
+  r = s.toLowerCase()
+  while (r.indexOf(r[i]) != r.lastIndexOf(r[i])) i++
+  return !s[i] ? '' : s[i]
+}
+console.log(firstNonRepeatingLetter(''), 'nothing')
+console.log(firstNonRepeatingLetter('stress'), '- t')
+console.log(firstNonRepeatingLetter('a'), '- a')
+console.log(firstNonRepeatingLetter('aabbcc'),'nothing')
+console.log(firstNonRepeatingLetter('Ramen'), '- R')
+console.log(firstNonRepeatingLetter('Go hang a salami, Im a lasagna hog!'), '- ,')
+*/
+
+// Memoized Fibonacci function
+/*const f = (n, memo = [0, 1, 1]) => n == 0 ? 0 : memo[n] ? memo[n] : (memo[n] = f(n - 1, memo) + f(n - 2, memo)) && memo[n]
+
+console.log(f(0))
+console.log(f(10))
+console.log(f(100))
+console.log(f(50))*/
+
+
+// gets a number in milliseconds returns the time - humanreadable(90) = 00:01:30
+/*function humanReadable (seconds) {
+  return formatTime(Math.floor(seconds/3600))+':'+formatTime(Math.floor(seconds/60%60))+':'+formatTime(Math.floor(seconds%60));
+
+  function formatTime(time){
+    return time < 10 ? '0' + time : time
   }
 }
-console.log(snail([[1, 2, 3], [4, 5, 6], [7, 8, 9],[2,2,2,2,22]]), '[1, 2, 3, 6, 9, 8, 7, 4, 5]')
+
+console.log(humanReadable(0), '00:00:00')
+console.log(humanReadable(59), '00:00:59')
+console.log(humanReadable(90), '00:01:30')
+console.log(humanReadable(45296), '12:34:56')
+console.log(humanReadable(86400), '24:00:00')
+*/
+
+// Given an n x n array, return the array elements arranged from outermost elements
+// to the middle element, traveling clockwise.
+// Solution 1 array = [[1,2,3],
+          /*           [8,9,4],
+                       [7,6,5]]
+snail(array) #=> [1,2,3,4,5,6,7,8,9]*/
+/*function snail(array) {
+  var vector = []
+  while (array.length) {
+    vector.push(array.shift())
+    array.map(row => vector.push(row.pop()))
+    array.reverse().map(row => row.reverse())
+  }
+  return vector.flat()
+}
+// Solution 2
+snail = function(a) {
+  if (!a.length) return []
+  s = ''
+  j = a.length/2
+  for (let i = 0; i <= j; i++){
+    a.length == 0 ? 0 : a.length == 1 ? s += ',' + a.join(',') 
+    : s += ','+a.map((x,i)=> i == 0 ? x.splice(0) : i == a.length-1 ? x.reverse().splice(0) : x.pop())
+    if (a.length >= 4) for (let k = a.length-2; k >= 1; --k) s +=','+a[k].shift()
+    a = a.filter(e=>isNaN(e))
+  }
+  return s.split(',').splice(1).map(Number)
+}
+console.log(snail([[1,2,3],[4,5,6]]))
+console.log(snail([[1, 2, 3], 
+                    [4, 5, 6], 
+                    [7, 8, 9]]))
+console.log('\n1, 2, 3, 6, 9, 8, 7, 4, 5')
+console.log(snail([[1, 2, 3, 4, 5], 
+                    [6, 7, 8, 9, 10], 
+                    [11, 12, 13, 14, 15], 
+                    [16, 17, 18, 19, 20], 
+                    [21, 22, 23, 24, 25]]))
+console.log('[1, 2, 3, 4, 5, 10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6, 7, 8, 9, 14, 19, 18, 17, 12, 13]')
 */
 
 //A format for expressing an ordered list of integers is to use a comma separated list of either 
@@ -14,14 +85,14 @@ console.log(snail([[1, 2, 3], [4, 5, 6], [7, 8, 9],[2,2,2,2,22]]), '[1, 2, 3, 6,
 //from the end integer in the range by a dash, '-'. 
 //The range includes all integers in the interval including both endpoints. 
 //It is not considered a range unless it spans at least 3 numbers.
-// For example
 /*solution1 = (list)=>list.reduce((acc,curr,i) => {
-  if (i==0) return curr.toString();
-  if (list[i-1] == curr-1 && list[i+1] == curr+1) return acc;
-  if (list[i-2] == curr-2 && list[i-1] == curr-1) return acc+"-"+curr;
-  return acc+","+curr;
-});
+  if (i==0) return curr.toString()
+  if (list[i-1] == curr-1 && list[i+1] == curr+1) return acc
+  if (list[i-2] == curr-2 && list[i-1] == curr-1) return acc+"-"+curr
+  return acc+","+curr
+})
 console.log('solution1\n',solution1([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]), "\n-6,-3-1,3-5,7-11,14,15,17-20")
+
 function solution(l){
   arr=[]
   result =[]
